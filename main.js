@@ -1,0 +1,1 @@
+// OOP -> stworzyc obiekty odpowiadajace mozliwym wsparciom, wstrzyknac je do sekcji about i modali; stworzyc obiekt odpowiadajacy modalowi completed
