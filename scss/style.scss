@@ -6,5 +6,209 @@
 
 // klasa marked -> gby bookmark zaznaczony
 
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    min-height: 300px;
+    height: 40vh;
+    padding: 8% 6%;
+    background-image: url(../images/image-hero-mobile.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.menu {
+    &__close {
+        display: none;
+    }
+
+    &__list {
+        display: none;
+    }
+}
+
+
+
+.content {
+    display: grid;
+    grid-column: 1fr;
+    row-gap: 25px;
+
+    position: absolute;
+    transform: translateY(-80px);
+    padding: 0 6% 20%;
+
+    &__intro, &__summary, &__about {
+        padding: 12% 7%;
+        border: 1px solid rgba($dark-gray, 0.1);
+        border-radius: 8px;
+        background-color: #fff;
+    }
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    position: relative;
+    padding-top: 50px;
+    text-align: center;
+
+    &__logo {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    &__title {
+        width: 100%;
+        font-size: 2.1rem;
+        font-weight: 700;
+    }
+
+    &__txt {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    &__btn {
+        flex-grow: 1;
+        margin-right: 10px;
+    }
+}
+
+.txt {
+    color: $dark-gray;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8;
+
+    &--lg {
+        display: block;
+        color: $black;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    &--sm {
+        font-size: 1.3rem;
+    }
+}
+
+.btn {
+    height: $btn-height;
+    padding: 0 30px;
+    background-color: $moderate-cyan;
+    border: none;
+    border-radius: calc(#{$btn-height} / 2);
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: $btn-height;
+
+    &--sm {
+        height: $btn--sm-height;
+        line-height: $btn--sm-height;
+        font-size: 1.4rem;
+    }
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    &__amount, &__backers, &__days-left {
+        padding: 20px 0;
+    }
+
+    &__backers {
+        width: min-content;
+        margin: 0 auto;
+        border-top: 1px solid rgba($dark-gray, 0.4);
+        border-bottom: 1px solid rgba($dark-gray, 0.4);
+    }
+}
+
+.about {
+    &__title {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    &__txt {
+        padding-top: 10%;
+    }
+
+    &__pledge {
+        margin-top: 10%;
+    }
+}
+
+.pledge {
+    border: 1px solid rgba($dark-gray, 0.3);
+    border-radius: 8px;
+    padding: 8%;
+
+    &__title, &__pledge {
+        font-size: 1.4rem;
+        line-height: 1.6;
+    }
+
+    &__title {
+        color: $black;
+        font-weight: 700;
+    }
+
+    &__pledge {
+        color: $moderate-cyan;
+        font-weight: 500;
+    }
+
+    &__txt {
+        padding: 10% 0;
+    }
+
+    &__pledge-left {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__numbers {
+        padding-right: 10px;
+    }
+
+    &__btn {
+        margin: 15px 50px 0 0;
+    }
+}
+
+.progressbar {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: rgb(240, 240, 240);
+
+    &__filled {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        transform: translateX(-15%);
+        background-color: $moderate-cyan;
+    }
+}
+
+.modal {
+    display: none;
+}
