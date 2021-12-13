@@ -16,6 +16,7 @@
 
 
 <body>
+  <div class="filter hidden" aria-hidden="true"></div>
   <header class="header">
     <div class="header__logo">
       <img src="./images/logo.svg" alt="">
@@ -23,11 +24,12 @@
     <nav class="header__menu menu">
       <div class="menu__hamburger">
         <img class="menu__icon" src="./images/icon-hamburger.svg" alt="">
+        <img class="menu__close hidden" src="./images/icon-close-menu.svg" alt="">
       </div>
-      <div class="menu__close">
+      <!-- <div class="menu__close hidden">
         <img class="menu__icon" src="./images/icon-close-menu.svg" alt="">
-      </div>
-      <ul class="menu__list">
+      </div> -->
+      <ul class="menu__list hidden">
         <li class="menu__item"><a href="#">About</a></li>
         <li class="menu__item"><a href="#">Discover</a></li>
         <li class="menu__item"><a href="#">Get Started</a></li>
@@ -97,7 +99,7 @@
         </div>
       </div>
 
-      <div class="about__pledge pledge" id="pledge200">
+      <div class="about__pledge pledge inactive" id="pledge200">
         <h3 class="pledge__title">Mahogany Special Edition</h3>
         <span class="pledge__pledge">Pledge $200 or more</span>
         <p class="pledge__txt txt">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
@@ -113,7 +115,7 @@
 
   <!-- Selection modal start -->
 
-  <div class="modal" id="modalPledges">
+  <div class="modal hidden" id="modalPledges">
     <div class="about">
       <div class="about__closing-icon">
         <img src="./images/icon-close-modal.svg" alt="">
@@ -121,49 +123,61 @@
       <h2 class="about__title">Back this project</h2>
       <p class="about__txt txt"> Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
 
-      <div class="about__pledge pledge" id="pledge0-modal">
-        <input type="radio" class="pledge__checkbox" id="pledge0-check">
+      <div class="about__pledge pledge pledge--modal" id="pledge0-modal">
+        <div class="pledge__checkbox container" aria-hidden="true">
+          <input type="radio" class="checkbox" id="pledge0-check" value=0>
+          <span class="checkmark"></span>
+        </div>
         <label for="pledge0-check">
           <h3 class="pledge__title">Pledge with no reward</h3>
         </label>
-        <p class="pledge__txt txt txt--sm">  Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
+        <p class="pledge__txt txt">  Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
       </div>
 
-      <div class="about__pledge pledge" id="pledge25-modal">
-        <input type="radio" class="pledge__checkbox" id="pledge25-check">
+      <div class="about__pledge pledge pledge--modal" id="pledge25-modal">
+        <div class="pledge__checkbox container" aria-hidden="true">
+          <input type="radio" class="checkbox" id="pledge25-check" value=25>
+          <span class="checkmark"></span>
+        </div>
         <label for="pledge25-check">
           <h3 class="pledge__title">Bamboo Stand</h3>
           <span class="pledge__pledge">Pledge $25 or more</span>
         </label>
-        <p class="pledge__txt txt txt--sm">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+        <p class="pledge__txt txt">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
         <div class="pledge__pledge-left">
-          <span class="txt txt--lg" id="left25">101</span>
+          <span class="pledge__numbers txt txt--md" id="left25">101</span>
           <span class="txt">left</span>
         </div>
       </div>
 
-      <div class="about__pledge pledge" id="pledge75-modal">
-        <input type="radio" class="pledge__checkbox" id="pledge75-check">
+      <div class="about__pledge pledge pledge--modal" id="pledge75-modal">
+        <div class="pledge__checkbox container" aria-hidden="true">
+          <input type="radio" class="checkbox" id="pledge75-check" value=75>
+          <span class="checkmark"></span>
+        </div>
         <label for="pledge75-check">
           <h3 class="pledge__title">Black Edition Stand</h3>
           <span class="pledge__pledge">Pledge $75 or more</span>
         </label>
-        <p class="pledge__txt txt txt--sm">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
+        <p class="pledge__txt txt">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="txt txt--lg" id="left75">64</span>
+          <span class="pledge__numbers txt txt--md" id="left75">64</span>
           <span class="txt">left</span>
         </div>
       </div>
 
-      <div class="about__pledge pledge" id="pledge200-modal">
-        <input type="radio" class="pledge__checkbox" id="pledge200-check">
+      <div class="about__pledge pledge pledge--modal inactive" id="pledge200-modal">
+        <div class="pledge__checkbox container" aria-hidden="true">
+          <input type="radio" class="checkbox" id="pledge200-check" value=200>
+          <span class="checkmark"></span>
+        </div>
         <label for="pledge200-check">
           <h3 class="pledge__title">Mahogany Special Edition</h3>
           <span class="pledge__pledge">Pledge $200 or more</span>
         </label>
-        <p class="pledge__txt txt txt--sm">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
+        <p class="pledge__txt txt">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="txt txt--lg" id="left200">0</span>
+          <span class="pledge__numbers txt txt--md" id="left200">0</span>
           <span class="txt">left</span>
         </div>
       </div>
@@ -183,9 +197,9 @@
 
   <!-- Success modal start -->
 
-  <div class="modal" id="modalSuccess">
+  <div class="modal hidden" id="modalSuccess">
     <div class="about">
-      <div class="about__logo round">
+      <div class="about__logo">
         <img class="about__icon" src="./images/icon-check.svg" alt="">
       </div>
       <h2 class="about__title">  Thanks for your support!</h2>

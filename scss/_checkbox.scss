@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+
+    .checkbox {
+        -webkit-appearance:none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        border-radius: 50%;
+        border: 1px solid rgba($dark-gray, 0.3);
+    }
+
+
+    .checked ~ .checkmark {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background-color: $moderate-cyan;
+    }
+}
+
