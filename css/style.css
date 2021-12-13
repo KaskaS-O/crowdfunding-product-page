@@ -5,6 +5,11 @@
           box-sizing: border-box;
 }
 
+input {
+  outline: none;
+  border: none;
+}
+
 html {
   font-size: 10px;
 }
@@ -275,7 +280,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 8%;
 }
 
 .pledge--selected {
@@ -324,6 +328,52 @@ body {
   width: 22px;
   height: 22px;
   margin-right: 15px;
+}
+
+.pledge__enter-pledge {
+  width: 100%;
+}
+
+.enter-pledge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px solid rgba(122, 122, 122, 0.3);
+}
+
+.enter-pledge__txt {
+  width: 100%;
+  padding: 20px 0 15px;
+}
+
+.enter-pledge__input {
+  width: 42%;
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid rgba(122, 122, 122, 0.3);
+  text-align: center;
+  color: black;
+  font-weight: 700;
+  font-size: 1.4rem;
+  background-image: url(../images/dollar-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4rem;
+  background-position: 20% center;
+}
+
+.enter-pledge__input:focus {
+  border: 1px solid #7a7a7a;
+}
+
+.enter-pledge__btn {
+  width: 50%;
 }
 
 .progressbar {

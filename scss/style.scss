@@ -229,7 +229,6 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        padding: 8%;
     }
 
     &--selected {
@@ -275,6 +274,49 @@
         margin-right: 15px;
     }
 
+    &__enter-pledge {
+        width: 100%;
+    }
+
+}
+
+.enter-pledge {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+
+    margin-top: 15px;
+    border-top: 1px solid rgba($dark-gray, 0.3);
+
+    &__txt {
+        width: 100%;
+        padding: 20px 0 15px;
+    }
+
+    &__input {
+        width: 42%;
+        height: $btn--sm-height;
+        border-radius: $btn--sm-height / 2;
+        border: 1px solid rgba($dark-gray, 0.3);
+        text-align: center;
+        color: $black;
+        font-weight: 700;
+        font-size: 1.4rem;
+
+        background-image: url(../images/dollar-svgrepo-com.svg);
+        background-repeat: no-repeat;
+        background-size: 1.4rem;
+        background-position: 20% center;
+
+        &:focus {
+            border: 1px solid $dark-gray;
+        }
+    }
+
+    &__btn {
+        width: 50%;
+    }
 }
 
 .progressbar {
