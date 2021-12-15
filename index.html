@@ -26,9 +26,6 @@
         <img class="menu__icon" src="./images/icon-hamburger.svg" alt="">
         <img class="menu__close hidden" src="./images/icon-close-menu.svg" alt="">
       </div>
-      <!-- <div class="menu__close hidden">
-        <img class="menu__icon" src="./images/icon-close-menu.svg" alt="">
-      </div> -->
       <ul class="menu__list hidden">
         <li class="menu__item"><a href="#">About</a></li>
         <li class="menu__item"><a href="#">Discover</a></li>
@@ -80,9 +77,9 @@
       <div class="about__pledge pledge" id="pledge25" data-pledge="pledge25">
         <h3 class="pledge__title">Bamboo Stand</h3>
         <span class="pledge__pledge">Pledge $25 or more</span>
-        <p class="pledge__txt txt">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+        <p class="pledge__txt txt">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--lg" id="left25" data-left="left">101</span>
+          <span class="pledge__numbers txt txt--lg" data-id="left25" data-pledge="pledge25">101</span>
           <span class="txt">left</span>
           <button class="pledge__btn btn btn--sm" id="btn25">Select Reward</button>
         </div>
@@ -93,7 +90,7 @@
         <span class="pledge__pledge">Pledge $75 or more</span>
         <p class="pledge__txt txt">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--lg" id="left75" data-left="left">64</span>
+          <span class="pledge__numbers txt txt--lg" data-id="left75" data-pledge="pledge75">64</span>
           <span class="txt">left</span>
           <button class="pledge__btn btn btn--sm" id="btn75">Select Reward</button>
         </div>
@@ -104,7 +101,7 @@
         <span class="pledge__pledge">Pledge $200 or more</span>
         <p class="pledge__txt txt">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--lg" id="left200" data-left="left">0</span>
+          <span class="pledge__numbers txt txt--lg" data-id="left200" data-pledge="pledge200">0</span>
           <span class="txt">left</span>
           <button class="pledge__btn btn btn--sm" id="btn200">Select Reward</button>
         </div>
@@ -152,7 +149,7 @@
         </label>
         <p class="pledge__txt txt">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--md" id="left25" data-left="left">101</span>
+          <span class="pledge__numbers txt txt--md" data-id="left25" data-pledge="pledge25">101</span>
           <span class="txt">left</span>
         </div>
         <div class="pledge__enter-pledge enter-pledge">
@@ -175,7 +172,7 @@
         </label>
         <p class="pledge__txt txt">You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--md" id="left75" data-left="left">64</span>
+          <span class="pledge__numbers txt txt--md" data-id="left75" data-pledge="pledge75">64</span>
           <span class="txt">left</span>
         </div>
         <div class="pledge__enter-pledge enter-pledge">
@@ -198,7 +195,7 @@
         </label>
         <p class="pledge__txt txt">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--md" id="left200" data-left="left">0</span>
+          <span class="pledge__numbers txt txt--md" data-id="left200" data-pledge="pledge200">0</span>
           <span class="txt">left</span>
         </div>
         <div class="pledge__enter-pledge enter-pledge">
@@ -213,26 +210,18 @@
 
   </div>
 
-<!-- DODAC KOMPONENT W JS -->
-
-  <!-- Selected pledge start -->
-  <!-- Enter your pledge
-  $25
-  Continue -->
-  <!-- Selected pledge end -->
-
   <!-- Selection modal end -->
 
   <!-- Success modal start -->
 
-  <div class="modal hidden" id="modalSuccess">
+  <div class="modal modal--success hidden" id="modalSuccess">
     <div class="about">
       <div class="about__logo">
         <img class="about__icon" src="./images/icon-check.svg" alt="">
       </div>
       <h2 class="about__title">  Thanks for your support!</h2>
       <p class="about__txt txt">Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
-      <button class="about__btn btn" id="closeSuccessModal">Got it!</button>
+      <button class="about__btn btn btn--sm" id="closeSuccessModal">Got it!</button>
     </div>
   </div>
   <!-- Success modal end -->

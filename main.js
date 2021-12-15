@@ -10,7 +10,7 @@ const modalPledges = document.getElementById('modalPledges');
 const modalSuccess = document.getElementById('modalSuccess');
 const closeModal = document.querySelector('.about__closing-icon');
 const enterPledges = [...document.querySelectorAll('.enter-pledge')];
-const pledgesLeft = [...document.querySelectorAll('[data-left]')];
+const pledgesLeft = [...document.querySelectorAll('[data-id]')];
 
 const btns = [...document.querySelectorAll('.btn')];
 let activeBtns = [];
@@ -19,7 +19,9 @@ const checkboxes = [...document.querySelectorAll('.checkbox')];
 let activeCheckboxes = [];
 
 const enterPledgeBtns = [...document.querySelectorAll('.enter-pledge__btn')];
+const enterPledgeInputs = [...document.querySelectorAll('.enter-pledge__input')];
 const enterPledgeForms = [...document.querySelectorAll('.enter-pledge__form')];
+let pledgeValue = 0;
 
 const moneyCollected = document.getElementById('moneyCollected');
 const backersNumber = document.getElementById('backersNumber');
@@ -59,8 +61,18 @@ const handleCheckbox = event => {
     })
 }
 
-const handlePledgeChoice = event => {
-    event.preventDefault()
+const handleModalClosing = () => {
+    modalPledges.classList.add('hidden');
+    modalSuccess.classList.add('hidden');
+    filter.classList.add('hidden');
+    enterPledges.forEach(el => el.classList.add('hidden'));
+    pledgeValue = 0;
+    activeCheckboxes.forEach(el => {
+        if (el.classList.contains('checked')) {
+            el.classList.remove('checked');
+            el.parentElement.parentElement.classList.remove('pledge--selected');
+        }
+    });
 }
 
 const handleModalShowing = event => {
@@ -82,7 +94,7 @@ const handleModalShowing = event => {
     filter.classList.remove('hidden');
     filter.style.height = `${pageHeight}px`;
 
-    if (activeEl !== document.getElementById('goToBacking') && !activeEl.classList.contains('enter-pledge__btn')) {
+    if (activeEl !== document.getElementById('goToBacking') && !activeEl.classList.contains('enter-pledge__btn') && activeEl !==document.getElementById('closeSuccessModal')) {
         const checkbox = activeCheckboxes.find(el => el.parentElement.parentElement.dataset.pledge === activePledge.dataset.pledge);
         
         const pledgeModalPos = pledgeModal.getBoundingClientRect();
@@ -95,22 +107,19 @@ const handleModalShowing = event => {
         pledgeModal.children[pledgeModal.children.length - 1].classList.remove('hidden');
     }
 
-    
-    const handleModalClosing = () => {
-        modalPledges.classList.add('hidden');
-        filter.classList.add('hidden');
-        enterPledges.forEach(el => el.classList.add('hidden'));
-        activeCheckboxes.forEach(el => {
-            if (el.classList.contains('checked')) {
-                el.classList.remove('checked');
-                el.parentElement.parentElement.classList.remove('pledge--selected');
-            }
-        });
-    }
-
     closeModal.addEventListener('click', handleModalClosing);
     activeCheckboxes.forEach(element => element.addEventListener('click', handleCheckbox));
     enterPledgeForms.forEach(form => form.addEventListener('submit', handlePledgeChoice));
+}
+
+const handlePledgeChoice = event => {
+    event.preventDefault()
+    const activeInput = enterPledgeInputs.find(el => el.parentElement === event.target);
+    pledgeValue = parseInt(activeInput.value);
+    modalSuccess.classList.remove('hidden');
+    modalPledges.classList.add('hidden');
+    document.getElementById('closeSuccessModal').addEventListener('click', handleModalClosing)
+    return pledgeValue
 }
 
 const handleHamburgerMenu = () => {
@@ -124,7 +133,6 @@ handleInactivePledges();
 activeBtns.forEach(btn => btn.addEventListener('click', handleModalShowing));
 hamburger.addEventListener('click', handleHamburgerMenu);
 
-// Dodac obsluge btn w enter-pledge
 // Obsluzyc zmiane ilosci dostepnych pledge'ow po zatwierdzeniu wyboru
 // Obsluzyc pasek stanu wplat, licznik kwoty
 // Obsluzyc zmiane ilosci backersow
