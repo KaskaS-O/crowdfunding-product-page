@@ -9,63 +9,80 @@ const pageHeight = parseInt(document.querySelector('.header').offsetHeight + doc
 const modalPledges = document.getElementById('modalPledges');
 const modalSuccess = document.getElementById('modalSuccess');
 const closeModal = document.querySelector('.about__closing-icon');
+const enterPledges = [...document.querySelectorAll('.enter-pledge')];
+const pledgesLeft = [...document.querySelectorAll('[data-left]')];
 
 const btns = [...document.querySelectorAll('.btn')];
-let activeBtns = btns.filter(btn => !btn.parentElement.parentElement.classList.contains('inactive'));
+let activeBtns = [];
 
-let checkboxes = [...document.querySelectorAll('.checkbox')];
-let activeCheckboxes = checkboxes.filter(el => !el.parentElement.parentElement.classList.contains('inactive'));
+const checkboxes = [...document.querySelectorAll('.checkbox')];
+let activeCheckboxes = [];
+
+const enterPledgeBtns = [...document.querySelectorAll('.enter-pledge__btn')];
+const enterPledgeForms = [...document.querySelectorAll('.enter-pledge__form')];
 
 const moneyCollected = document.getElementById('moneyCollected');
 const backersNumber = document.getElementById('backersNumber');
 const progressbarFilled = document.querySelector('.progressbar__filled');
 
 
-class EnterPledge {
-    constructor(value, activePledge) {
-        this.value = value;
-        this.parent = activePledge;
-    }
+enterPledges.forEach(el => el.classList.add('hidden'));
 
-    render() {
-        const div = document.createElement('div');
-        const p = document.createElement('p');
-        const inputNumber = document.createElement('input');
-        const btn = document.createElement('button');
+const handleInactivePledges = () => {
+    pledgesLeft.forEach(el => {
+        if (el.innerText === '0') {
+            el.parentElement.parentElement.classList.add('inactive');
+            activeBtns = btns.filter(btn => !btn.parentElement.parentElement.classList.contains('inactive'));
+            activeCheckboxes = checkboxes.filter(el => !el.parentElement.parentElement.classList.contains('inactive'));
 
-        div.classList.add('pledge__enter-pledge', 'enter-pledge');
-        p.classList.add('enter-pledge__txt', 'txt');
-        p.innerText = 'Enter your pledge';
-        inputNumber.classList.add('enter-pledge__input');
-        inputNumber.type = 'number';
-        inputNumber.value = parseInt(this.value);
-        inputNumber.min = parseInt(this.value);
-        btn.classList.add('enter-pledge__btn', 'btn', 'btn--sm');
-        btn.innerText = 'Continue'
+            const inactiveBtns = btns.filter(item => !activeBtns.includes(item));
+            inactiveBtns.forEach(item => item.innerText = 'Out of Stock')
+        }
+    })
+}
 
-        this.parent.appendChild(div);
-        div.appendChild(p);
-        div.appendChild(inputNumber);
-        div.appendChild(btn);
+const handleCheckbox = event => {
+    activeEl = event.target;
+    const activePledge = activeEl.parentElement.parentElement;
 
-    }
-};
+    activeCheckboxes.forEach(el => {
+        if (el === activeEl) {
+            el.classList.add('checked');
+            activePledge.classList.add('pledge--selected');
+            activePledge.children[activePledge.children.length - 1].classList.remove('hidden');
 
+        } else if (el.classList.contains('checked')) {
+            el.classList.remove('checked');
+            el.parentElement.parentElement.classList.remove('pledge--selected');
+            el.parentElement.parentElement.children[el.parentElement.parentElement.children.length - 1].classList.add('hidden');
+        }
+    })
+}
+
+const handlePledgeChoice = event => {
+    event.preventDefault()
+}
 
 const handleModalShowing = event => {
-    const activeEl = event.target;
-    const activePledge = activeEl.parentElement.parentElement;
+
+    let activeEl = event.target;
+    let activePledge = '';
+    if (activeEl === document.getElementById('goToBacking')) {
+        activePledge = document.getElementById('pledge0-modal');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } else {
+        activePledge = activeEl.parentElement.parentElement;
+
+    }
+    const pledgeModals = [...document.querySelectorAll('.pledge--modal')];
+    const pledgeModal = pledgeModals.find(el => el.dataset.pledge === activePledge.dataset.pledge);
 
     modalPledges.classList.remove('hidden');
     filter.classList.remove('hidden');
     filter.style.height = `${pageHeight}px`;
 
-    if (activeEl === document.getElementById('goToBacking')) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-        const pledgeModals = [...document.querySelectorAll('.pledge--modal')];
-
-        const pledgeModal = pledgeModals.find(el => el.dataset.pledge === activePledge.dataset.pledge);
+    if (activeEl !== document.getElementById('goToBacking') && !activeEl.classList.contains('enter-pledge__btn')) {
         const checkbox = activeCheckboxes.find(el => el.parentElement.parentElement.dataset.pledge === activePledge.dataset.pledge);
         
         const pledgeModalPos = pledgeModal.getBoundingClientRect();
@@ -75,20 +92,25 @@ const handleModalShowing = event => {
 
         pledgeModal.classList.add('pledge--selected');
         checkbox.classList.add('checked');
-
-// Dodac zabezpieczenie przed wielokrotnym tworzeniem instancji w jednym pledge'u
-        const enter = new EnterPledge(pledgeModal.dataset.value, pledgeModal);
-        enter.render();
+        pledgeModal.children[pledgeModal.children.length - 1].classList.remove('hidden');
     }
-}
 
-const handleModalClosing = () => {
-    modalPledges.classList.add('hidden');
-    filter.classList.add('hidden');
-    activeCheckboxes.forEach(el => {
-        el.classList.remove('checked');
-        el.parentElement.parentElement.classList.remove('pledge--selected');
-    });
+    
+    const handleModalClosing = () => {
+        modalPledges.classList.add('hidden');
+        filter.classList.add('hidden');
+        enterPledges.forEach(el => el.classList.add('hidden'));
+        activeCheckboxes.forEach(el => {
+            if (el.classList.contains('checked')) {
+                el.classList.remove('checked');
+                el.parentElement.parentElement.classList.remove('pledge--selected');
+            }
+        });
+    }
+
+    closeModal.addEventListener('click', handleModalClosing);
+    activeCheckboxes.forEach(element => element.addEventListener('click', handleCheckbox));
+    enterPledgeForms.forEach(form => form.addEventListener('submit', handlePledgeChoice));
 }
 
 const handleHamburgerMenu = () => {
@@ -98,33 +120,9 @@ const handleHamburgerMenu = () => {
     filter.classList.toggle('hidden'); 
 }
 
-const handleCheckbox = event => {
-    activeEl = event.target;
-    const activePledge = activeEl.parentElement.parentElement;
-    const pledgeModals = [...document.querySelectorAll('.pledge--modal')];
-    const pledgeModal = pledgeModals.find(el => el.dataset.pledge === activePledge.dataset.pledge);
-
-    activeCheckboxes.forEach(el => {
-        if (el === activeEl) {
-            el.classList.add('checked');
-            el.parentElement.parentElement.classList.add('pledge--selected');
-
-            const enter = new EnterPledge(pledgeModal.dataset.value, pledgeModal);
-            enter.render();
-
-// Dodac zabezpieczenie przed mozliwoscia pojawienia sie instancji enter w wielu miejscach na raz (usuwanie obiektu przy zmianie wyboru wysokosci pledge'a)
-
-        } else if (el.classList.contains('checked')) {
-            el.classList.remove('checked');
-            el.parentElement.parentElement.classList.remove('pledge--selected');
-        }
-    })
-}
-
+handleInactivePledges();
 activeBtns.forEach(btn => btn.addEventListener('click', handleModalShowing));
-activeCheckboxes.forEach(element => element.addEventListener('click', handleCheckbox));
 hamburger.addEventListener('click', handleHamburgerMenu);
-closeModal.addEventListener('click', handleModalClosing);
 
 // Dodac obsluge btn w enter-pledge
 // Obsluzyc zmiane ilosci dostepnych pledge'ow po zatwierdzeniu wyboru
@@ -133,4 +131,3 @@ closeModal.addEventListener('click', handleModalClosing);
 // Obsluzyc bookmark
 // Hovery i inne activy
 // Desktop layout, media queries, zmiana wygladu menu
-// Obsluzyc dynamiczna zmiane pledge'ow na nieaktywne kiedy zostanie ich 0

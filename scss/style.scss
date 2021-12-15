@@ -7,29 +7,6 @@
 
 // klasa marked -> gby bookmark zaznaczony
 
-.inactive {
-    opacity: 0.4;
-
-    .btn {
-        background-color: $dark-gray;
-    }
-}
-
-.filter {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: linear-gradient(black, transparent);
-    opacity: 0.5;
-}
-
-.hidden {
-    display: none;
-}
-
 .header {
     position: relative;
     min-height: 300px;
@@ -291,7 +268,13 @@
 
     &__txt {
         width: 100%;
-        padding: 20px 0 15px;
+        padding-top: 20px;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
     }
 
     &__input {
@@ -349,4 +332,27 @@
     padding: 10% 6%;
     border-radius: 8px;
     background-color: #fff;
+}
+
+.inactive {
+    opacity: 0.4;
+
+    .btn {
+        background-color: $dark-gray;
+    }
+}
+
+.filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(black, transparent);
+    opacity: 0.5;
+}
+
+.hidden {
+    display: none;
 }
