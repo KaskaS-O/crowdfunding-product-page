@@ -4,6 +4,11 @@ const leftPledgesDefaultNumbers = [
     {name: 'pledge200', value: 0},
 ];
 
+const moneyToCollect = 100000;
+let moneyCollected = 89914;
+let backersNumber = 5007;
+let daysLeft = 56;
+
 const hamburger = document.querySelector('.menu__hamburger');
 const menuIcon = document.querySelector('.menu__icon');
 const closeMenu = document.querySelector('.menu__close');
@@ -30,12 +35,30 @@ const enterPledgeInputs = [...document.querySelectorAll('.enter-pledge__input')]
 const enterPledgeForms = [...document.querySelectorAll('.enter-pledge__form')];
 let pledgeValue = 0;
 
-const moneyCollected = document.getElementById('moneyCollected');
-const backersNumber = document.getElementById('backersNumber');
+const moneyCollectedSpan = document.getElementById('moneyCollected');
+const backersNumberSpan = document.getElementById('backersNumber');
+const daysLeftSpan = document.getElementById('daysLeft');
 const progressbarFilled = document.querySelector('.progressbar__filled');
 
-
 enterPledges.forEach(el => el.classList.add('hidden'));
+
+
+const showCampaignNumbers = () => {
+    moneyCollectedSpan.innerText = `$${moneyCollected.toLocaleString('en-US')}`;
+    backersNumberSpan.innerText = backersNumber.toLocaleString('en-US');
+    daysLeftSpan.innerText = daysLeft;
+
+    const progressBarFillPercentage = moneyCollected / moneyToCollect * 100;
+    const translateX = 100 - progressBarFillPercentage;
+    progressbarFilled.style.transform = `translateX(-${translateX}%)`;
+};
+
+const handleHamburgerMenu = () => {
+    menuIcon.classList.toggle('hidden');
+    closeMenu.classList.toggle('hidden');
+    menuList.classList.toggle('hidden');   
+    filter.classList.toggle('hidden'); 
+};
 
 const showDefaultLeftPledges = () => {
     pledgesLeftModified.forEach(item => {
@@ -91,6 +114,7 @@ const handleModalClosing = () => {
             el.parentElement.parentElement.classList.remove('pledge--selected');
         }
     });
+    enterPledgeInputs.forEach(input => input.value = input.defaultValue)
 };
 
 const handleModalShowing = event => {
@@ -147,24 +171,24 @@ const handlePledgeChoice = event => {
         field.innerText = pledgesLeftModified[index].value
     });
     handleInactivePledges();
+    handleCampaignProgress();
     document.getElementById('closeSuccessModal').addEventListener('click', handleModalClosing);
     return pledgeValue
 };
 
-const handleHamburgerMenu = () => {
-    menuIcon.classList.toggle('hidden');
-    closeMenu.classList.toggle('hidden');
-    menuList.classList.toggle('hidden');   
-    filter.classList.toggle('hidden'); 
+const handleCampaignProgress = () => {
+    moneyCollected = moneyCollected + pledgeValue;
+    backersNumber++;
+
+    showCampaignNumbers()
 };
 
 showDefaultLeftPledges();
 handleInactivePledges();
+showCampaignNumbers();
 activeBtns.forEach(btn => btn.addEventListener('click', handleModalShowing));
 hamburger.addEventListener('click', handleHamburgerMenu);
 
-// Obsluzyc pasek stanu wplat, licznik kwoty
-// Obsluzyc zmiane ilosci backersow
 // Obsluzyc bookmark
 // Hovery i inne activy
 // Desktop layout, media queries, zmiana wygladu menu
