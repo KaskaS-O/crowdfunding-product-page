@@ -1,3 +1,9 @@
+const leftPledgesDefaultNumbers = [
+    {name: 'pledge25', value: 101},
+    {name: 'pledge75', value: 64},
+    {name: 'pledge200', value: 0},
+];
+
 const hamburger = document.querySelector('.menu__hamburger');
 const menuIcon = document.querySelector('.menu__icon');
 const closeMenu = document.querySelector('.menu__close');
@@ -11,6 +17,7 @@ const modalSuccess = document.getElementById('modalSuccess');
 const closeModal = document.querySelector('.about__closing-icon');
 const enterPledges = [...document.querySelectorAll('.enter-pledge')];
 const pledgesLeft = [...document.querySelectorAll('[data-id]')];
+const pledgesLeftModified = pledgesLeft.map(item => item = {name: item.parentElement.parentElement.dataset.pledge, value: 0});
 
 const btns = [...document.querySelectorAll('.btn')];
 let activeBtns = [];
@@ -30,6 +37,17 @@ const progressbarFilled = document.querySelector('.progressbar__filled');
 
 enterPledges.forEach(el => el.classList.add('hidden'));
 
+const showDefaultLeftPledges = () => {
+    pledgesLeftModified.forEach(item => {
+        const matchingItem = leftPledgesDefaultNumbers.find(el => el.name === item.name);
+        item.value = matchingItem.value;
+    });
+    pledgesLeft.forEach((field, index) => {
+        field.innerText = pledgesLeftModified[index].value
+    })
+    
+};
+
 const handleInactivePledges = () => {
     pledgesLeft.forEach(el => {
         if (el.innerText === '0') {
@@ -41,7 +59,7 @@ const handleInactivePledges = () => {
             inactiveBtns.forEach(item => item.innerText = 'Out of Stock')
         }
     })
-}
+};
 
 const handleCheckbox = event => {
     activeEl = event.target;
@@ -59,7 +77,7 @@ const handleCheckbox = event => {
             el.parentElement.parentElement.children[el.parentElement.parentElement.children.length - 1].classList.add('hidden');
         }
     })
-}
+};
 
 const handleModalClosing = () => {
     modalPledges.classList.add('hidden');
@@ -73,7 +91,7 @@ const handleModalClosing = () => {
             el.parentElement.parentElement.classList.remove('pledge--selected');
         }
     });
-}
+};
 
 const handleModalShowing = event => {
 
@@ -110,7 +128,7 @@ const handleModalShowing = event => {
     closeModal.addEventListener('click', handleModalClosing);
     activeCheckboxes.forEach(element => element.addEventListener('click', handleCheckbox));
     enterPledgeForms.forEach(form => form.addEventListener('submit', handlePledgeChoice));
-}
+};
 
 const handlePledgeChoice = event => {
     event.preventDefault()
@@ -118,22 +136,33 @@ const handlePledgeChoice = event => {
     pledgeValue = parseInt(activeInput.value);
     modalSuccess.classList.remove('hidden');
     modalPledges.classList.add('hidden');
-    document.getElementById('closeSuccessModal').addEventListener('click', handleModalClosing)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    pledgesLeftModified.forEach(item => {
+        if (item.name === activeInput.dataset.pledge) {
+            item.value--
+        };
+    });
+    pledgesLeft.forEach((field, index) => {
+        field.innerText = pledgesLeftModified[index].value
+    });
+    handleInactivePledges();
+    document.getElementById('closeSuccessModal').addEventListener('click', handleModalClosing);
     return pledgeValue
-}
+};
 
 const handleHamburgerMenu = () => {
     menuIcon.classList.toggle('hidden');
     closeMenu.classList.toggle('hidden');
     menuList.classList.toggle('hidden');   
     filter.classList.toggle('hidden'); 
-}
+};
 
+showDefaultLeftPledges();
 handleInactivePledges();
 activeBtns.forEach(btn => btn.addEventListener('click', handleModalShowing));
 hamburger.addEventListener('click', handleHamburgerMenu);
 
-// Obsluzyc zmiane ilosci dostepnych pledge'ow po zatwierdzeniu wyboru
 // Obsluzyc pasek stanu wplat, licznik kwoty
 // Obsluzyc zmiane ilosci backersow
 // Obsluzyc bookmark
