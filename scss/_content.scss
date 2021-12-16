@@ -1,0 +1,16 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 25px;
+
+    position: absolute;
+    transform: translateY(-80px);
+    padding: 0 6% 20%;
+
+    &__intro, &__summary, &__about {
+        padding: 12% 7%;
+        border: 1px solid rgba($dark-gray, 0.1);
+        border-radius: 8px;
+        background-color: #fff;
+    }
+}

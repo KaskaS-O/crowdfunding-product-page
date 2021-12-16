@@ -1,0 +1,17 @@
+.btn {
+    height: $btn-height;
+    background-color: $moderate-cyan;
+    border: none;
+    border-radius: calc(#{$btn-height} / 2);
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: $btn-height;
+
+    &--sm {
+        height: $btn--sm-height;
+        width: $btn--sm-width;
+        line-height: $btn--sm-height;
+        font-size: 1.4rem;
+    }
+}

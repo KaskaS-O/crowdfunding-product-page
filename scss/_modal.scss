@@ -1,0 +1,15 @@
+.modal {
+    position: absolute;
+    top: 120px;
+    left: 6%;
+    right: 6%;
+    z-index: 3;
+    padding: 10% 6%;
+    border-radius: 8px;
+    background-color: #fff;
+
+    &--success {
+        top: 150px;
+        text-align: center;
+    }
+}

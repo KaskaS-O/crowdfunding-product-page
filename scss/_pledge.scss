@@ -1,0 +1,104 @@
+.pledge {
+    border: 1px solid rgba($dark-gray, 0.3);
+    border-radius: 8px;
+    padding: 8%;
+
+    &--modal {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &--selected {
+        border: 2px solid $moderate-cyan;
+    }
+
+    &__title, &__pledge {
+        font-size: 1.4rem;
+        line-height: 1.6;
+    }
+
+    &__title {
+        color: $black;
+        font-weight: 700;
+    }
+
+    &__pledge {
+        color: $moderate-cyan;
+        font-weight: 500;
+    }
+
+    &__txt {
+        padding: 10% 0;
+    }
+
+    &__pledge-left {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__numbers {
+        padding-right: 8px;
+    }
+
+    &__btn {
+        margin: 15px 50px 0 0;
+    }
+
+    &__checkbox {
+        width: 22px;
+        height: 22px;
+        margin-right: 15px;
+    }
+
+    &__enter-pledge {
+        width: 100%;
+    }
+
+}
+
+.enter-pledge {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+
+    margin-top: 15px;
+    border-top: 1px solid rgba($dark-gray, 0.3);
+
+    &__txt {
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
+    }
+
+    &__input {
+        width: 42%;
+        height: $btn--sm-height;
+        border-radius: $btn--sm-height / 2;
+        border: 1px solid rgba($dark-gray, 0.3);
+        text-align: center;
+        color: $black;
+        font-weight: 700;
+        font-size: 1.4rem;
+
+        background-image: url(../images/dollar-svgrepo-com.svg);
+        background-repeat: no-repeat;
+        background-size: 1.4rem;
+        background-position: 20% center;
+
+        &:focus {
+            border: 1px solid $dark-gray;
+        }
+    }
+
+    &__btn {
+        width: 50%;
+    }
+}
