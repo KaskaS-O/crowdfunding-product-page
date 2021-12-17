@@ -3,14 +3,47 @@
     grid-template-columns: 1fr;
     row-gap: 25px;
 
-    position: absolute;
-    transform: translateY(-80px);
+    transform: translateY(-20vh);
     padding: 0 6% 20%;
+
+    @media (min-width: $mobile-md) {
+        transform: translateY(-10vh);
+        padding: 0 10% 15%;
+    }
+
+    @media (min-width: $mobile-lg) {
+        transform: translateY(-20vh);
+    }
+
+    @media (min-width: $desktop-sm) {
+        transform: translateY(-100px);
+        padding: 0 20% 10%;
+    }
+
+    @media (min-width: $desktop-lg) {
+        padding: 0 25% 5%;
+    }
+
+    @media (min-width: $desktop-lg) {
+        transform: translateY(-150px);
+        margin: 0 auto;
+        padding: 0 0 5%;
+        max-width: 800px;
+    }
+
 
     &__intro, &__summary, &__about {
         padding: 12% 7%;
         border: 1px solid rgba($dark-gray, 0.1);
         border-radius: 8px;
         background-color: #fff;
+
+        @media (min-width: $mobile-md) {
+            padding: 10%;
+        }
+
+        @media (min-width: $desktop-sm) {
+            padding: 8% 6%;
+        }
     }
 }

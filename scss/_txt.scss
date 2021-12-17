@@ -9,6 +9,11 @@
         color: $black;
         font-size: 3rem;
         font-weight: 700;
+
+        @media (min-width: $desktop-sm) {
+            line-height: 1.4;
+        }
+
     }
 
     &--md {

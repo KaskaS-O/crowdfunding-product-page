@@ -3,6 +3,14 @@
 
 html {
     font-size: 10px;
+
+    @media (min-width: $mobile-md) {
+        font-size: 12px;
+    }
+
+    @media (min-width: $desktop-sm) {
+        font-size: 11px;
+    }
 }
 
 body {

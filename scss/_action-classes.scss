@@ -20,3 +20,13 @@
 .hidden {
     display: none;
 }
+
+.marked {
+    .intro__icon--cyan {
+        opacity: 1;
+    }
+
+    .intro__bookmark-txt {
+        color: $dark-cyan;
+    }
+}

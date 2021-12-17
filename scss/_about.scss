@@ -4,28 +4,67 @@
     &__title {
         font-size: 1.8rem;
         font-weight: 700;
+
+        @media (min-width: $desktop-sm) {
+            font-size: 2rem;
+        }
     }
 
     &__txt {
         padding-top: 10%;
+
+        @media (min-width: $desktop-sm) {
+            padding-top: 5%;
+        }
+
     }
 
     &__pledge {
         margin-top: 10%;
+
+        @media (min-width: $desktop-sm) {
+            margin-top: 5%;
+        }
+
     }
 
     &__closing-icon {
         position: absolute;
         top: 0;
         right: 0;
+        opacity: 0.4;
+        transition: 0.2s;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
     }
 
     &__logo {
         padding-bottom: 20px;
+
+        @media (min-width: $mobile-md) {
+            padding-bottom: 30px;
+        }
+
+        img {
+            @media (min-width: $mobile-md) {
+                height: 8rem;
+            }
+        }
     }
 
     &__btn {
         width: 110px;
         margin-top: 30px;
+
+        @media (min-width: $mobile-md) {
+            width: $btn--sm-width;
+        }
+
+        @media (min-width: $desktop-sm) {
+            width: 0.7 * $btn--sm-width;
+        }
     }
 }

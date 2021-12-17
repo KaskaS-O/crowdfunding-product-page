@@ -8,8 +8,34 @@
     border-radius: 8px;
     background-color: #fff;
 
+    @media (min-width: $mobile-md) {
+        left: 10%;
+        right: 10%;
+    }
+
+    @media (min-width: $desktop-sm) {
+        left: 20%;
+        right: 20%;
+        padding: 5%;
+    }
+
+    @media (min-width: $desktop-lg) {
+        left: 25%;
+        right: 25%;
+    }
+
     &--success {
         top: 150px;
         text-align: center;
+
+        @media (min-width: $desktop-sm) {
+            left: 27%;
+            right: 27%;
+        }
+
+        @media (min-width: $desktop-sm) {
+            left: 30%;
+            right: 30%;
+        }
     }
 }

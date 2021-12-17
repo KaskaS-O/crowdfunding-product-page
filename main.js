@@ -14,15 +14,20 @@ const menuIcon = document.querySelector('.menu__icon');
 const closeMenu = document.querySelector('.menu__close');
 const menuList = document.querySelector('.menu__list');
 
+const bookmark = document.querySelector('.intro__bookmark');
+const bookmarkIconMarked = document.querySelector('.intro__icon--cyan');
+const bookmarkTxt = document.querySelector('.intro__bookmark-txt');
+
 const filter = document.querySelector('.filter');
 const pageHeight = parseInt(document.querySelector('.header').offsetHeight + document.querySelector('.content').offsetHeight);
+const pageWidth = parseInt(document.querySelector('body').offsetWidth);
 
 const modalPledges = document.getElementById('modalPledges');
 const modalSuccess = document.getElementById('modalSuccess');
 const closeModal = document.querySelector('.about__closing-icon');
 const enterPledges = [...document.querySelectorAll('.enter-pledge')];
 const pledgesLeft = [...document.querySelectorAll('[data-id]')];
-const pledgesLeftModified = pledgesLeft.map(item => item = {name: item.parentElement.parentElement.dataset.pledge, value: 0});
+const pledgesLeftModified = pledgesLeft.map(item => item = {name: item.parentElement.parentElement.parentElement.dataset.pledge, value: 0});
 
 const btns = [...document.querySelectorAll('.btn')];
 let activeBtns = [];
@@ -42,6 +47,13 @@ const progressbarFilled = document.querySelector('.progressbar__filled');
 
 enterPledges.forEach(el => el.classList.add('hidden'));
 
+if (pageWidth >=1200) {
+    menuList.classList.remove('hidden');
+}
+
+const handleBookmark = () => {
+    bookmark.classList.toggle('marked');
+}
 
 const showCampaignNumbers = () => {
     moneyCollectedSpan.innerText = `$${moneyCollected.toLocaleString('en-US')}`;
@@ -188,7 +200,5 @@ handleInactivePledges();
 showCampaignNumbers();
 activeBtns.forEach(btn => btn.addEventListener('click', handleModalShowing));
 hamburger.addEventListener('click', handleHamburgerMenu);
+bookmark.addEventListener('click', handleBookmark);
 
-// Obsluzyc bookmark
-// Hovery i inne activy
-// Desktop layout, media queries, zmiana wygladu menu

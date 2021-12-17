@@ -1,17 +1,41 @@
 .header {
     position: relative;
     min-height: 300px;
-    height: 40vh;
+    height: 50vh;
     padding: 8% 6%;
     background-image: url(../images/image-hero-mobile.jpg);
     background-size: contain;
     background-repeat: no-repeat;
+
+    @media (min-width: $mobile-md) {
+        height: 60vh;
+    }
+
+    @media (min-width: $desktop-sm) {
+        height: 400px;
+        background-image: url(../images/image-hero-desktop.jpg);
+        background-size: cover;
+    }
+
+    @media (min-width: $desktop-xl) {
+        height: 550px;
+    }
 
     &__logo {
         position: absolute;
         z-index: 2;
         top: 8%;
         left: 6%;
+
+        @media (min-width: $desktop-sm) {
+            top: 12%;
+            left: 10%;
+        }
+
+        @media (min-width: $desktop-xl) {
+            top: 15%;
+            left: 10%;
+        }
     }
 }
 
@@ -25,6 +49,10 @@
 
     &__hamburger {
         right: 6%;
+
+        @media (min-width: $desktop-sm) {
+            display: none;
+        }
     }
 
     &__list {
@@ -34,21 +62,57 @@
         border-radius: 8px;
         background-color: #fff;
         list-style: none;
+
+        @media (min-width: $mobile-md) {
+            width: 50%;
+            right: 10%;
+            left: auto;
+            top: 100px;
+        }
+
+        @media (min-width: $desktop-sm) {
+            display: flex;
+            justify-content: flex-end;
+            top: 12%;
+            right: 10%;
+            background-color: transparent;
+        }
+
+        @media (min-width: $desktop-xl) {
+            top: 15%;
+        }
     }
 
     &__item {
         padding: 25px;
         font-weight: 500;
         font-size: 1.8rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @media (min-width: $desktop-sm) {
+            padding: 0 20px;
+            font-size: 1.4rem;
+        }
         
         a {
             color: $black;
             text-decoration: none;
+
+            @media (min-width: $desktop-sm) {
+                color: white;
+            }
         }
     }
 
     &__item:nth-of-type(2) {
         border-top: 1px solid rgba($dark-gray, 0.3);
         border-bottom: 1px solid rgba($dark-gray, 0.3);
+
+        @media (min-width: $desktop-sm) {
+            border: none;
+        }
     }
 }

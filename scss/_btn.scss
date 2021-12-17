@@ -7,6 +7,12 @@
     font-weight: 700;
     font-size: 1.5rem;
     line-height: $btn-height;
+    transition: 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $dark-cyan;
+    }
 
     &--sm {
         height: $btn--sm-height;

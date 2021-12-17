@@ -2,10 +2,21 @@
     display: grid;
     grid-template-columns: 1fr;
 
-    text-align: center;
+    @media (min-width: $desktop-sm) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
     &__amount, &__backers, &__days-left {
         padding: 20px 0;
+
+        @media (min-width: $mobile-md) {
+            padding: 15px 0;
+        }
+
+        @media (min-width: $desktop-sm) {
+            padding: 0;
+        }
+
     }
 
     &__backers {
@@ -13,5 +24,21 @@
         margin: 0 auto;
         border-top: 1px solid rgba($dark-gray, 0.4);
         border-bottom: 1px solid rgba($dark-gray, 0.4);
+
+        @media (min-width: $desktop-sm) {
+            width: 100%;
+            border-top: none;
+            border-bottom: none;
+            border-left: 1px solid rgba($dark-gray, 0.4);
+            border-right: 1px solid rgba($dark-gray, 0.4);
+        }
+
+    }
+
+    &__progress {
+        @media (min-width: $desktop-sm) {
+            grid-area: 2/1/3/-1;
+        }
+
     }
 }

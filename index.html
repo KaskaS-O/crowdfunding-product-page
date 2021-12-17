@@ -42,8 +42,10 @@
       <h1 class="intro__title">Mastercraft Bamboo Monitor Riser</h1>
       <p class="intro__txt txt">A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
       <button class="intro__btn btn" id="goToBacking">Back this project</button>
-      <div class="intro__bookmark round">
+      <div class="intro__bookmark">
         <img class="intro__icon" src="./images/icon-bookmark.svg" alt="">
+        <img class="intro__icon intro__icon--cyan" src="./images/icon-bookmark-cyan.svg" alt="" aria-hidden="true">
+        <span class="intro__bookmark-txt">Bookmark</span>
       </div>
     </section>
 
@@ -79,8 +81,10 @@
         <span class="pledge__pledge">Pledge $25 or more</span>
         <p class="pledge__txt txt">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--lg" data-id="left25" data-pledge="pledge25"></span>
-          <span class="txt">left</span>
+          <div class="pledge__container">
+            <span class="pledge__numbers txt txt--lg" data-id="left25" data-pledge="pledge25"></span>
+            <span class="txt">left</span>
+          </div>
           <button class="pledge__btn btn btn--sm" id="btn25">Select Reward</button>
         </div>
       </div>
@@ -90,8 +94,10 @@
         <span class="pledge__pledge">Pledge $75 or more</span>
         <p class="pledge__txt txt">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--lg" data-id="left75" data-pledge="pledge75"></span>
-          <span class="txt">left</span>
+          <div class="pledge__container">
+            <span class="pledge__numbers txt txt--lg" data-id="left75" data-pledge="pledge75"></span>
+            <span class="txt">left</span>
+          </div>
           <button class="pledge__btn btn btn--sm" id="btn75">Select Reward</button>
         </div>
       </div>
@@ -101,8 +107,10 @@
         <span class="pledge__pledge">Pledge $200 or more</span>
         <p class="pledge__txt txt">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--lg" data-id="left200" data-pledge="pledge200"></span>
-          <span class="txt">left</span>
+          <div class="pledge__container">
+            <span class="pledge__numbers txt txt--lg" data-id="left200" data-pledge="pledge200"></span>
+            <span class="txt">left</span>
+          </div>
           <button class="pledge__btn btn btn--sm" id="btn200">Select Reward</button>
         </div>
       </div>
@@ -125,10 +133,10 @@
           <input type="radio" class="checkbox" id="pledge0-check">
           <span class="checkmark"></span>
         </div>
-        <label for="pledge0-check">
-          <h3 class="pledge__title">Pledge with no reward</h3>
+        <label for="pledge0-check" class="pledge__container">
+          <h3 class="pledge__title pledge__title--modal">Pledge with no reward</h3>
         </label>
-        <p class="pledge__txt txt">  Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
+        <p class="pledge__txt  pledge__txt--modal txt">  Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
         <div class="pledge__enter-pledge enter-pledge">
           <label for="form0" class="enter-pledge__txt txt">Enter your pledge</label>
           <form action="" id="form0" class="enter-pledge__form">
@@ -143,17 +151,19 @@
           <input type="radio" class="checkbox" id="pledge25-check">
           <span class="checkmark"></span>
         </div>
-        <label for="pledge25-check">
-          <h3 class="pledge__title">Bamboo Stand</h3>
+        <label for="pledge25-check" class="pledge__container">
+          <h3 class="pledge__title pledge__title--modal">Bamboo Stand</h3>
           <span class="pledge__pledge">Pledge $25 or more</span>
         </label>
-        <p class="pledge__txt txt">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
+        <p class="pledge__txt pledge__txt--modal txt">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--md" data-id="left25" data-pledge="pledge25"></span>
-          <span class="txt">left</span>
+          <div class="pledge__container pledge__container--modal">
+            <span class="pledge__numbers txt txt--md" data-id="left25" data-pledge="pledge25"></span>
+            <span class="txt">left</span>
+          </div>
         </div>
         <div class="pledge__enter-pledge enter-pledge">
-          <label for="form25" class="enter-pledge__txt txt">Enter your pledge</p>
+          <label for="form25" class="enter-pledge__txt txt">Enter your pledge</label>
           <form action="" id="form25" class="enter-pledge__form">
             <input type="number" class="enter-pledge__input" value="25" min="25" data-pledge="pledge25">
             <button class="enter-pledge__btn btn btn--sm">Continue</button>
@@ -166,14 +176,16 @@
           <input type="radio" class="checkbox" id="pledge75-check">
           <span class="checkmark"></span>
         </div>
-        <label for="pledge75-check">
-          <h3 class="pledge__title">Black Edition Stand</h3>
+        <label for="pledge75-check" class="pledge__container">
+          <h3 class="pledge__title pledge__title--modal">Black Edition Stand</h3>
           <span class="pledge__pledge">Pledge $75 or more</span>
         </label>
-        <p class="pledge__txt txt">You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
+        <p class="pledge__txt pledge__txt--modal txt">You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--md" data-id="left75" data-pledge="pledge75"></span>
-          <span class="txt">left</span>
+          <div class="pledge__container pledge__container--modal">
+            <span class="pledge__numbers txt txt--md" data-id="left75" data-pledge="pledge75"></span>
+            <span class="txt">left</span>
+          </div>
         </div>
         <div class="pledge__enter-pledge enter-pledge">
           <label for="form75" class="enter-pledge__txt txt">Enter your pledge</label>
@@ -189,14 +201,16 @@
           <input type="radio" class="checkbox" id="pledge200-check">
           <span class="checkmark"></span>
         </div>
-        <label for="pledge200-check">
-          <h3 class="pledge__title">Mahogany Special Edition</h3>
+        <label for="pledge200-check"class="pledge__container">
+          <h3 class="pledge__title pledge__title--modal">Mahogany Special Edition</h3>
           <span class="pledge__pledge">Pledge $200 or more</span>
         </label>
-        <p class="pledge__txt txt">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
+        <p class="pledge__txt pledge__txt--modal txt">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
         <div class="pledge__pledge-left">
-          <span class="pledge__numbers txt txt--md" data-id="left200" data-pledge="pledge200"></span>
-          <span class="txt">left</span>
+          <div class="pledge__container pledge__container--modal">
+            <span class="pledge__numbers txt txt--md" data-id="left200" data-pledge="pledge200"></span>
+            <span class="txt">left</span>
+          </div>
         </div>
         <div class="pledge__enter-pledge enter-pledge">
           <label for="form200" class="enter-pledge__txt txt">Enter your pledge</label>
