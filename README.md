@@ -31,7 +31,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/KaskaS-O/crowdfunding-product-page](https://github.com/KaskaS-O/crowdfunding-product-page)
-- Live Site URL: [https://kaskas-o.github.io/crowdfunding-product-page](https://kaskas-o.github.io/crowdfunding-product-page])
+- Live Site URL: [https://kaskas-o.github.io/crowdfunding-product-page](https://kaskas-o.github.io/crowdfunding-product-page)
 
 ## My process
 
