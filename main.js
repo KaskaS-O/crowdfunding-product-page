@@ -201,5 +201,3 @@ showCampaignNumbers();
 activeBtns.forEach(btn => btn.addEventListener('click', handleModalShowing));
 hamburger.addEventListener('click', handleHamburgerMenu);
 bookmark.addEventListener('click', handleBookmark);
-
-// poprawic nieaktywne pledge - zepsute przez zmiany w html
