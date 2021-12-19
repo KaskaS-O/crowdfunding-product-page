@@ -3,6 +3,10 @@
 
     .btn {
         background-color: $dark-gray;
+
+        &:hover {
+            cursor: inherit;
+        }
     }
 }
 

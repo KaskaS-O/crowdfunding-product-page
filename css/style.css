@@ -986,6 +986,10 @@ body {
   background-color: #7a7a7a;
 }
 
+.inactive .btn:hover {
+  cursor: inherit;
+}
+
 .filter {
   position: absolute;
   top: 0;

@@ -86,7 +86,7 @@ const showDefaultLeftPledges = () => {
 const handleInactivePledges = () => {
     pledgesLeft.forEach(el => {
         if (el.innerText === '0') {
-            el.parentElement.parentElement.classList.add('inactive');
+            el.parentElement.parentElement.parentElement.classList.add('inactive');
             activeBtns = btns.filter(btn => !btn.parentElement.parentElement.classList.contains('inactive'));
             activeCheckboxes = checkboxes.filter(el => !el.parentElement.parentElement.classList.contains('inactive'));
 
@@ -202,3 +202,4 @@ activeBtns.forEach(btn => btn.addEventListener('click', handleModalShowing));
 hamburger.addEventListener('click', handleHamburgerMenu);
 bookmark.addEventListener('click', handleBookmark);
 
+// poprawic nieaktywne pledge - zepsute przez zmiany w html
